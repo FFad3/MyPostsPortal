@@ -1,4 +1,4 @@
-﻿using Domain.Entities.Other;
+﻿using Domain.Entities;
 
 namespace Domain.RepositoryInterface
 {

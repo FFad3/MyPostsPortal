@@ -8,7 +8,7 @@ namespace Domain.Entities
         public int OpinionId { get; set; }
 
         [Required]
-        public bool isLike { get; set; }
+        public bool IsLike { get; set; }
 
         //Navigation Properties
         public int PostId { get; set; }
