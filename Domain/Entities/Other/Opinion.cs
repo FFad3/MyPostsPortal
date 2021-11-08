@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Domain.Entities.Other
+namespace Domain.Entities
 {
     public class Opinion : EntityBase
     {
