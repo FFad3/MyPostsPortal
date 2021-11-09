@@ -26,3 +26,4 @@ namespace Domain.Entities
         public List<Opinion>? Opinions { get; set; } = new();
     }
 }
+//TODO: Lear about Login and Registration full usage

@@ -19,3 +19,4 @@ namespace Domain.Entities
         public List<Opinion> Opinions { get; set; }
     }
 }
+//TODO: Check navigation to parent / Add CreatedBy prop

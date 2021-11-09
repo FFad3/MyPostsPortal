@@ -1,6 +1,12 @@
-var builder = WebApplication.CreateBuilder(args);
+using Infrastructure.Data;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 
+var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
+
+builder.Services.AddDbContext<MyPostsPortalContext>(options =>
+options.UseSqlServer(builder.Configuration.GetConnectionString("Default")));
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
