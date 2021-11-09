@@ -19,5 +19,7 @@ namespace Domain.Entities
 
         //Navigation Properties
         public virtual Post Post { get; set; }
+
+
     }
 }

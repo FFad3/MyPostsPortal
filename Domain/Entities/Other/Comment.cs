@@ -9,7 +9,6 @@ namespace Domain.Entities
 
         [Required, MaxLength(100)]
         public string Text { get; set; }
-
         //Navigation Properties
         public int PostId { get; set; }
         public Post Post { get; set; }
