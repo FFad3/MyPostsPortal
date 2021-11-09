@@ -40,5 +40,9 @@ namespace Infrastructure.Repositories
             _context.Remove(ob);
             _context.SaveChanges();
         }
+
+        //Login
+        public Account Login(string Login, string Passowrd) => _context.Accounts.FirstOrDefault(x => x.Login == Login && x.Password == Passowrd);
+
     }
 }

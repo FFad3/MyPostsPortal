@@ -3,6 +3,6 @@
 namespace Domain.RepositoryInterface
 {
     public interface IAccountDetails : IBaseRepository<AccountDetails>
-    {
+    {      
     }
 }
