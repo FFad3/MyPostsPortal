@@ -1,4 +1,7 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Application.ServiceInterfaces;
+using Application.Services;
+using Microsoft.Extensions.DependencyInjection;
+using System.Reflection;
 
 namespace Application
 {
@@ -6,6 +9,10 @@ namespace Application
     {
         public static IServiceCollection AddApplication(this IServiceCollection services)
         {
+            services.AddScoped<IAccountService, AccountService>();
+
+            //system reflection
+            services.AddAutoMapper(Assembly.GetExecutingAssembly());
             return services;
         }
     }

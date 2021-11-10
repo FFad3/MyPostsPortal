@@ -7,14 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Dtos\Account\AccountDetailsDto\" />
-    <Folder Include="Services\" />
-    <Folder Include="ServiceInterfaces\" />
+    <PackageReference Include="AutoMapper" Version="10.1.1" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.1.1" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="AutoMapper" Version="10.1.1" />
-    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.1.1" />
+    <ProjectReference Include="..\Infrastructure\Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>
