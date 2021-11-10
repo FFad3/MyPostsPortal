@@ -46,8 +46,7 @@ namespace Infrastructure.Migrations
                         name: "FK_Accounts_AccountDetails_DetailsAccountDetailsId",
                         column: x => x.DetailsAccountDetailsId,
                         principalTable: "AccountDetails",
-                        principalColumn: "AccountDetailsId",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "AccountDetailsId");
                 });
 
             migrationBuilder.CreateTable(
@@ -67,8 +66,7 @@ namespace Infrastructure.Migrations
                         name: "FK_Posts_Accounts_AccountId",
                         column: x => x.AccountId,
                         principalTable: "Accounts",
-                        principalColumn: "AccountId",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "AccountId");
                 });
 
             migrationBuilder.CreateTable(
@@ -90,14 +88,12 @@ namespace Infrastructure.Migrations
                         name: "FK_Comments_Accounts_AccountId",
                         column: x => x.AccountId,
                         principalTable: "Accounts",
-                        principalColumn: "AccountId",
-                        onDelete: ReferentialAction.NoAction);
+                        principalColumn: "AccountId");
                     table.ForeignKey(
                         name: "FK_Comments_Posts_PostId",
                         column: x => x.PostId,
                         principalTable: "Posts",
-                        principalColumn: "PostId",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "PostId");
                 });
 
             migrationBuilder.CreateTable(
@@ -119,14 +115,12 @@ namespace Infrastructure.Migrations
                         name: "FK_Opinions_Accounts_AccountId",
                         column: x => x.AccountId,
                         principalTable: "Accounts",
-                        principalColumn: "AccountId",
-                        onDelete: ReferentialAction.NoAction);
+                        principalColumn: "AccountId");
                     table.ForeignKey(
                         name: "FK_Opinions_Posts_PostId",
                         column: x => x.PostId,
                         principalTable: "Posts",
-                        principalColumn: "PostId",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "PostId");
                 });
 
             migrationBuilder.CreateTable(
@@ -147,8 +141,7 @@ namespace Infrastructure.Migrations
                         name: "FK_PostContents_Posts_PostContentId",
                         column: x => x.PostContentId,
                         principalTable: "Posts",
-                        principalColumn: "PostId",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "PostId");
                 });
 
             migrationBuilder.CreateIndex(
