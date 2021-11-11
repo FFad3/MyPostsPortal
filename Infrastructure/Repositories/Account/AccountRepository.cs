@@ -1,6 +1,7 @@
 ﻿using Domain.Entities;
 using Domain.RepositoryInterface;
 using Infrastructure.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Repositories
 {
@@ -14,7 +15,7 @@ namespace Infrastructure.Repositories
         }   
 
         //Get all Accounts
-        public IEnumerable<Account> GetAll() => _context.Accounts;
+        public IEnumerable<Account> GetAll() => _context.Accounts.Include(x=>x.Details);
 
         //Get Account by Id
         public Account GetById(int id) => _context.Accounts.FirstOrDefault(x => x.AccountId == id);

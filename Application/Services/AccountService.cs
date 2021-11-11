@@ -29,5 +29,12 @@ namespace Application.Services
 
             return _mapper.Map<CreateAccountDto>(result);
         }
+
+        public IEnumerable<CreateAccountDto> GetAccounts()
+        {
+            var accounts = _repository.GetAll();
+            var result = _mapper.Map<IEnumerable<CreateAccountDto>>(accounts);
+            return result;
+        }
     }
 }

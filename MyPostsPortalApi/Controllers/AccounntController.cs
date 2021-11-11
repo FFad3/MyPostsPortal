@@ -24,5 +24,15 @@ namespace MyPostsPortalApi.Controllers
             return Ok(result);
         }
 
+
+
+
+
+        [HttpGet,SwaggerOperation(Summary ="Get all accounts")]
+        public IActionResult GetAccounts()
+        {
+            var result = _service.GetAccounts();
+            return Ok(result);
+        }
     }
 }

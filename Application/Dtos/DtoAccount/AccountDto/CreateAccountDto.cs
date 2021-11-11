@@ -15,12 +15,11 @@ namespace Application.Dtos.DtoAccount.AccountDto
         public void Mapping(Profile profile)
         {
             //Account mapping
-            profile.CreateMap<CreateAccountDto,Account>();
-            profile.CreateMap<Account,CreateAccountDto>();
+            profile.CreateMap<CreateAccountDto, Account>().
+                ForMember(x => x.Details, c => c.MapFrom(m => m.Details));
+            profile.CreateMap<Account, CreateAccountDto>().
+                ForMember(x => x.Details, c => c.MapFrom(m => m.Details));
 
-            //Account details mapping
-            profile.CreateMap<CreateAccountDetailsDto, AccountDetails>();
-            profile.CreateMap<AccountDetails, CreateAccountDetailsDto>();
         }
     }
 }

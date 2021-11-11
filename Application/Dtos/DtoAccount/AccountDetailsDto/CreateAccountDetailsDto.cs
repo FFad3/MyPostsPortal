@@ -13,6 +13,7 @@ namespace Application.Dtos.DtoAccount.AccountDetailsDto
         public void Mapping(Profile profile)
         {
             profile.CreateMap<CreateAccountDetailsDto,AccountDetails>();
+            profile.CreateMap<AccountDetails,CreateAccountDetailsDto>();
         }
     }
 }
