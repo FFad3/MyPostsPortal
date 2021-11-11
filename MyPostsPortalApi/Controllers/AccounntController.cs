@@ -17,25 +17,26 @@ namespace MyPostsPortalApi.Controllers
             _service = service;
         }
 
-        [HttpGet("~/Login"),SwaggerOperation(Summary ="Login")]
+        [HttpGet("~/Account/Login"),SwaggerOperation(Summary ="Login")]
         public IActionResult Login(string login,string password)
         {
             var result = _service.Login(login, password);
             return Ok(result);
         }
 
-        [HttpPost("~/Register"), SwaggerOperation(Summary ="Register account")]
+        [HttpPost("~/Account/Register"), SwaggerOperation(Summary ="Register account")]
         public IActionResult Register(AccountDto account)
         {
-            var result = _service.Register(account);
-            return Ok(result);
+            if (ModelState.IsValid)
+            {
+                var result = _service.Register(account);
+                return Ok(result);
+            }
+
+            return BadRequest();
         }
 
-
-
-
-
-        [HttpGet("~/Accounts"), SwaggerOperation(Summary ="Get all accounts")]
+        [HttpGet("~/Account"), SwaggerOperation(Summary ="Get all accounts")]
         public IActionResult GetAccounts()
         {
             var result = _service.GetAccounts();
