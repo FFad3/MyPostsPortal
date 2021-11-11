@@ -49,5 +49,9 @@ namespace Infrastructure.Repositories
             Include(x => x.Details).
             FirstOrDefault(x => x.Login == Login && x.Password == Passowrd);
 
+        //Check if login is used
+        public string LoginIsAvaiable(string Login) => _context.Accounts.
+            Select(x => x.Login).
+            FirstOrDefault();
     }
 }

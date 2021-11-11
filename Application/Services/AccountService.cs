@@ -4,11 +4,6 @@ using Application.Services.Utilities;
 using AutoMapper;
 using Domain.Entities;
 using Domain.RepositoryInterface;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Application.Services
 {
@@ -24,8 +19,8 @@ namespace Application.Services
         }
         public AccountDto Login(string username, string password)
         {
-            //Hashing
-            username=DataHashing.StringToHash(username);
+            //Hashing credentials
+            username = DataHashing.StringToHash(username);
             password=DataHashing.StringToHash(password);
 
             var account = _repository.Login(username, password);
@@ -37,6 +32,12 @@ namespace Application.Services
         public AccountDto Register(AccountDto newAccount)
         {
             var account = _mapper.Map<Account>(newAccount);
+            //Check if login is avaiable
+            if(_repository.LoginIsAvaiable(account.Login) is null)
+            {
+                throw new NotImplementedException();
+            }
+            account.Created = DateTime.Now;
             //TODO:Password and login rules
             //Hashing credentials
             account.Login = DataHashing.StringToHash(account.Login);
@@ -45,7 +46,6 @@ namespace Application.Services
             var result =_repository.Add(account);
             return _mapper.Map<AccountDto>(result);
         }
-
 
         public IEnumerable<AccountDto> GetAccounts()
         {

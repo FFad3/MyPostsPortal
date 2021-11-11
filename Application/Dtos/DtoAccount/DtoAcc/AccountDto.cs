@@ -19,9 +19,12 @@ namespace Application.Dtos.DtoAccount.DtoAcc
         public void Mapping(Profile profile)
         {
             profile.CreateMap<Account, AccountDto>().
-                ForMember(x => x.Details, c => c.MapFrom(m => m.Details));
+                ForMember(x => x.Details, c => c.
+                MapFrom(m => m.Details));
+
             profile.CreateMap<AccountDto, Account>().
-                ForMember(x => x.Details, c => c.MapFrom(m => m.Details));
+                ForMember(x => x.Details, c => c.
+                MapFrom(m => m.Details));
         }
     }
 }
