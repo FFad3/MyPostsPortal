@@ -15,10 +15,12 @@ namespace Infrastructure.Repositories
         }   
 
         //Get all Accounts
-        public IEnumerable<Account> GetAll() => _context.Accounts.Include(x=>x.Details);
+        public IEnumerable<Account> GetAll() => _context.Accounts.
+            Include(x=>x.Details);
 
         //Get Account by Id
-        public Account GetById(int id) => _context.Accounts.FirstOrDefault(x => x.AccountId == id);
+        public Account GetById(int id) => _context.Accounts.
+            FirstOrDefault(x => x.AccountId == id);
 
         //Add new Account
         public Account Add(Account ob)
@@ -43,7 +45,9 @@ namespace Infrastructure.Repositories
         }
 
         //Login
-        public Account Login(string Login, string Passowrd) => _context.Accounts.FirstOrDefault(x => x.Login == Login && x.Password == Passowrd);
+        public Account Login(string Login, string Passowrd) => _context.Accounts.
+            Include(x => x.Details).
+            FirstOrDefault(x => x.Login == Login && x.Password == Passowrd);
 
     }
 }

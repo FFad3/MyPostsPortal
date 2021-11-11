@@ -1,4 +1,4 @@
-﻿using Application.Dtos.DtoAccount.AccountDto;
+﻿using Application.Dtos.DtoAccount.DtoAcc;
 using Application.ServiceInterfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -17,10 +17,17 @@ namespace MyPostsPortalApi.Controllers
             _service = service;
         }
 
-        [HttpPost,SwaggerOperation(Summary ="Create account")]
-        public IActionResult Register(CreateAccountDto account)
+        [HttpGet("~/Login"),SwaggerOperation(Summary ="Login")]
+        public IActionResult Login(string login,string password)
         {
-            var result = _service.CreatAccount(account);
+            var result = _service.Login(login, password);
+            return Ok(result);
+        }
+
+        [HttpPost("~/Register"), SwaggerOperation(Summary ="Register account")]
+        public IActionResult Register(AccountDto account)
+        {
+            var result = _service.Register(account);
             return Ok(result);
         }
 
@@ -28,7 +35,7 @@ namespace MyPostsPortalApi.Controllers
 
 
 
-        [HttpGet,SwaggerOperation(Summary ="Get all accounts")]
+        [HttpGet("~/Accounts"), SwaggerOperation(Summary ="Get all accounts")]
         public IActionResult GetAccounts()
         {
             var result = _service.GetAccounts();

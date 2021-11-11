@@ -1,4 +1,4 @@
-﻿using Application.Dtos.DtoAccount.AccountDto;
+﻿using Application.Dtos.DtoAccount.DtoAcc;
 using Application.ServiceInterfaces;
 using AutoMapper;
 using Domain.Entities;
@@ -21,20 +21,29 @@ namespace Application.Services
             _mapper = mapper;
             _repository = repository;
         }
-
-        public CreateAccountDto CreatAccount(CreateAccountDto newAccount)
+        public AccountDto Login(string username, string password)
         {
-            var account = _mapper.Map<Account>(newAccount);
-            var result = _repository.Add(account);
+            var credentials = _repository.Login(username, password);
+            var result = _mapper.Map<AccountDto>(credentials);
 
-            return _mapper.Map<CreateAccountDto>(result);
-        }
-
-        public IEnumerable<CreateAccountDto> GetAccounts()
-        {
-            var accounts = _repository.GetAll();
-            var result = _mapper.Map<IEnumerable<CreateAccountDto>>(accounts);
             return result;
         }
+
+        public AccountDto Register(AccountDto newAccount)
+        {
+            var account = _mapper.Map<Account>(newAccount);
+            var result =_repository.Add(account);
+
+            return _mapper.Map<AccountDto>(result);
+        }
+
+
+        public IEnumerable<AccountDto> GetAccounts()
+        {
+            var accounts = _repository.GetAll();
+            var result = _mapper.Map<IEnumerable<AccountDto>>(accounts);
+            return result;
+        }
+
     }
 }

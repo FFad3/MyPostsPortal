@@ -2,9 +2,9 @@
 using AutoMapper;
 using Domain.Entities;
 
-namespace Application.Dtos.DtoAccount.AccountDetailsDto
+namespace Application.Dtos.DtoAccount.DtoAccDetials
 {
-    public class CreateAccountDetailsDto : IMap
+    public class AccountDetailsDto : IMap
     {
         public string Name { get; set; }
         public string Surname { get; set; }
@@ -12,8 +12,8 @@ namespace Application.Dtos.DtoAccount.AccountDetailsDto
 
         public void Mapping(Profile profile)
         {
-            profile.CreateMap<CreateAccountDetailsDto,AccountDetails>();
-            profile.CreateMap<AccountDetails,CreateAccountDetailsDto>();
+            profile.CreateMap<AccountDetailsDto,AccountDetails>();
+            profile.CreateMap<AccountDetails,AccountDetailsDto>();
         }
     }
 }
