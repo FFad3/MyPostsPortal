@@ -17,6 +17,7 @@ namespace Application.Services
             _mapper = mapper;
             _repository = repository;
         }
+
         public AccountDto Login(string username, string password)
         {
             //Hashing credentials
@@ -32,19 +33,21 @@ namespace Application.Services
         public AccountDto Register(AccountDto newAccount)
         {
             var account = _mapper.Map<Account>(newAccount);
+            //TODO:Password and login rules
             //Check if login is avaiable
             if(_repository.LoginIsAvaiable(account.Login) is null)
             {
-                throw new NotImplementedException();
-            }
-            account.Created = DateTime.Now;
-            //TODO:Password and login rules
-            //Hashing credentials
-            account.Login = DataHashing.StringToHash(account.Login);
-            account.Password = DataHashing.StringToHash(account.Password);
+                account.Created = DateTime.Now;
+                //Hashing credentials
+                account.Login = DataHashing.StringToHash(account.Login);
+                account.Password = DataHashing.StringToHash(account.Password);
 
-            var result =_repository.Add(account);
-            return _mapper.Map<AccountDto>(result);
+                var result = _repository.Add(account);
+                return _mapper.Map<AccountDto>(result);
+            }
+            //TODO: If login is used communicate
+            return null;
+            
         }
 
         public IEnumerable<AccountDto> GetAccounts()

@@ -9,7 +9,7 @@ namespace Application.Services.Utilities
 {
     internal class DataHashing
     {
-        public static string StringToHash(string inputString)
+        internal static string StringToHash(string inputString)
         {
             SHA1 sha1 = SHA1.Create();
 

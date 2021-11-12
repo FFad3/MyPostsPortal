@@ -30,9 +30,11 @@ namespace MyPostsPortalApi.Controllers
             if (ModelState.IsValid)
             {
                 var result = _service.Register(account);
-                return Ok(result);
-            }
 
+                if (result is AccountDto) return Ok(result);
+
+                return BadRequest("Login already is use");
+            }
             return BadRequest();
         }
 

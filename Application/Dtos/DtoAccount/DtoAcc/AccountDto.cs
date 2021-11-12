@@ -8,6 +8,7 @@ namespace Application.Dtos.DtoAccount.DtoAcc
 {
     public class AccountDto : IMap
     {
+        public int AccountId { get; set; }
         [Required,MaxLength(30),MinLength(8)]
         public string Username { get; set; } = String.Empty;
         [Required,MaxLength(30),MinLength(8)]
