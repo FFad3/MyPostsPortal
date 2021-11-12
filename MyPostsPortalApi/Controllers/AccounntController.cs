@@ -1,6 +1,5 @@
-﻿using Application.Dtos.DtoAccount.DtoAcc;
+﻿using Application.Dtos.DtoAcc;
 using Application.ServiceInterfaces;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
 
@@ -25,7 +24,7 @@ namespace MyPostsPortalApi.Controllers
         }
 
         [HttpPost("~/Account/Register"), SwaggerOperation(Summary ="Register account")]
-        public IActionResult Register(AccountDto account)
+        public IActionResult Register(CreateAccountDto account)
         {
             if (ModelState.IsValid)
             {

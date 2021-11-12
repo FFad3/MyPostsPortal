@@ -1,4 +1,4 @@
-﻿using Application.Dtos.DtoAccount.DtoAcc;
+﻿using Application.Dtos.DtoAcc;
 using Application.ServiceInterfaces;
 using Application.Services.Utilities;
 using AutoMapper;
@@ -30,7 +30,7 @@ namespace Application.Services
             return result;
         }
 
-        public AccountDto Register(AccountDto newAccount)
+        public AccountDto Register(CreateAccountDto newAccount)
         {
             var account = _mapper.Map<Account>(newAccount);
             //TODO:Password and login rules

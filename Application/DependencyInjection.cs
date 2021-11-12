@@ -10,7 +10,7 @@ namespace Application
         public static IServiceCollection AddApplication(this IServiceCollection services)
         {
             services.AddScoped<IAccountService, AccountService>();
-
+            services.AddScoped<IPostService, PostService>();
             //system reflection
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
             return services;

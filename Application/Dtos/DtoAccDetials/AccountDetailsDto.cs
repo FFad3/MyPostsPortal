@@ -3,7 +3,7 @@ using AutoMapper;
 using Domain.Entities;
 using System.ComponentModel.DataAnnotations;
 
-namespace Application.Dtos.DtoAccount.DtoAccDetials
+namespace Application.Dtos.DtoAccDetials
 {
     public class AccountDetailsDto : IMap
     {

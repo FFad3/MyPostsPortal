@@ -1,10 +1,10 @@
-﻿using Application.Dtos.DtoAccount.DtoAccDetials;
+﻿using Application.Dtos.DtoAccDetials;
 using Application.Dtos.Mapper;
 using AutoMapper;
 using Domain.Entities;
 using System.ComponentModel.DataAnnotations;
 
-namespace Application.Dtos.DtoAccount.DtoAcc
+namespace Application.Dtos.DtoAcc
 {
     public class AccountDto : IMap
     {
@@ -20,12 +20,10 @@ namespace Application.Dtos.DtoAccount.DtoAcc
         public void Mapping(Profile profile)
         {
             profile.CreateMap<Account, AccountDto>().
-                ForMember(x => x.Details, c => c.
-                MapFrom(m => m.Details));
+                ForMember(x => x.Details, c => c.MapFrom(m => m.Details));
 
             profile.CreateMap<AccountDto, Account>().
-                ForMember(x => x.Details, c => c.
-                MapFrom(m => m.Details));
+                ForMember(x => x.Details, c => c.MapFrom(m => m.Details));
         }
     }
 }
