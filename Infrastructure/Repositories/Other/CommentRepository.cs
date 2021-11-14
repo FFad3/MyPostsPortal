@@ -19,6 +19,7 @@ namespace Infrastructure.Repositories.Other
         public Comment Add(Comment ob)
         {
             _context.Add(ob);
+            _context.SaveChanges();
             return ob;
         }
 

@@ -17,7 +17,7 @@ namespace MyPostsPortalApi.Controllers
             _service = service;
         }
 
-        [HttpGet("~/Comment/Create"),SwaggerOperation("Add new comment")]
+        [HttpPost("~/Create"),SwaggerOperation("Add new comment")]
         public IActionResult CreatePost(CreateCommentDto newPost)
         {
             if (ModelState.IsValid)
