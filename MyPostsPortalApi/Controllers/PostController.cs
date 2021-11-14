@@ -17,14 +17,14 @@ namespace MyPostsPortalApi.Controllers
             _service = service;
         }
 
-        [HttpGet("~/AllPosts"),SwaggerOperation(Summary ="Get all posts")]
+        [HttpGet("~/Post"),SwaggerOperation(Summary ="Get all posts")]
         public IActionResult GetPosts()
         {
             var result = _service.GetAllPosts();
             return Ok(result);
         }
 
-        [HttpPost("~/CreatePost"),SwaggerOperation(Summary ="Create new post")]
+        [HttpPost("~/Post/Create"),SwaggerOperation(Summary ="Create new post")]
         public IActionResult CreatePost(CreatePostDto newPost)
         {
             if (ModelState.IsValid)

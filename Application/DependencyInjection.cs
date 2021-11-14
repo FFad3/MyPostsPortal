@@ -11,6 +11,7 @@ namespace Application
         {
             services.AddScoped<IAccountService, AccountService>();
             services.AddScoped<IPostService, PostService>();
+            services.AddScoped<ICommentService, CommentService>();
             //system reflection
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
             return services;

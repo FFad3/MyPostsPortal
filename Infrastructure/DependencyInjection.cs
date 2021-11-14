@@ -1,5 +1,6 @@
 ﻿using Domain.RepositoryInterface;
 using Infrastructure.Repositories;
+using Infrastructure.Repositories.Other;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Infrastructure
@@ -10,6 +11,7 @@ namespace Infrastructure
         {
             services.AddScoped<IAccountRepository, AccountRepository>();
             services.AddScoped<IPostRepository, PostRepository>();
+            services.AddScoped<ICommentRepository, CommentRepository>();
 
             return services;
         }
