@@ -40,7 +40,7 @@ namespace Application.Services
             if (_repository.LoginIsAvaiable(newAccount.Login)) return null;
 
             var account = _mapper.Map<Account>(newAccount);
-            account.Created = DateTime.Now;
+                account.Created = DateTime.Now;
 
             var result = _repository.Add(account);
 
@@ -54,5 +54,10 @@ namespace Application.Services
             return result;
         }
 
+        public void Remove(int id)
+        {
+            var account = _repository.GetById(id);
+            _repository.Delete(account);
+        }
     }
 }

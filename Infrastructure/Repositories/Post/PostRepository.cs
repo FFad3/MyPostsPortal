@@ -40,5 +40,8 @@ namespace Infrastructure.Repositories
             _context.SaveChanges();
         }
 
+        //check if account with current id exists
+        public bool AccountExist(int id) => _context.Accounts.Any(x => x.AccountId == id);
+        public string GetUsername(int id)=> _context.Accounts.Where(x=>x.AccountId==id).Select(c=>c.Username).ToString();
     }
 }

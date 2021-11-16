@@ -11,6 +11,7 @@ namespace Application.Services.Utilities
     {
         internal static string StringToHash(string input)
         {
+
             // To calculate MD5 hash from an input string
             MD5 md5 = MD5.Create();
             byte[] inputBytes = Encoding.ASCII.GetBytes(input);// string =>bytes

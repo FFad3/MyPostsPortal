@@ -16,14 +16,14 @@ namespace MyPostsPortalApi.Controllers
             _service = service;
         }
 
-        [HttpGet("~/Account/Login"),SwaggerOperation(Summary ="Login")]
+        [HttpGet("~/Login"),SwaggerOperation(Summary ="Login")]
         public IActionResult Login(string login,string password)
         {
             var result = _service.Login(login, password);
             return Ok(result);
         }
 
-        [HttpPost("~/Account/Register"), SwaggerOperation(Summary ="Register account")]
+        [HttpPost("~/Register"), SwaggerOperation(Summary ="Register account")]
         public IActionResult Register(CreateAccountDto account)
         {
             if (ModelState.IsValid)
@@ -37,11 +37,18 @@ namespace MyPostsPortalApi.Controllers
             return BadRequest();
         }
 
-        [HttpGet("~/Account"), SwaggerOperation(Summary ="Get all accounts")]
+        [HttpGet("~/Accounts"), SwaggerOperation(Summary ="Get all accounts")]
         public IActionResult GetAccounts()
         {
             var result = _service.GetAccounts();
             return Ok(result);
+        }
+
+        [HttpDelete("~/Remove"),SwaggerOperation(Summary ="Remove account with defined id")]
+        public IActionResult RemoveAccount(int id)
+        {
+            _service.Remove(id);
+            return NoContent();
         }
     }
 }

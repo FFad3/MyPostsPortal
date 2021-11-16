@@ -20,7 +20,7 @@ namespace Infrastructure.Repositories
 
         //Get Account by Id
         public Account GetById(int id) => _context.Accounts.
-            FirstOrDefault(x => x.AccountId == id);
+            SingleOrDefault(x => x.AccountId == id);
 
         //Add new Account
         public Account Add(Account ob)
@@ -47,7 +47,7 @@ namespace Infrastructure.Repositories
         //Login
         public Account Login(string Login, string Passowrd) => _context.Accounts.
             Include(x => x.Details).
-            FirstOrDefault(x => x.Login == Login && x.Password == Passowrd);
+            SingleOrDefault(x => x.Login == Login && x.Password == Passowrd);
 
         //Check if login is used
         public bool LoginIsAvaiable(string Login) => _context.Accounts.Any(x => x.Login == Login);

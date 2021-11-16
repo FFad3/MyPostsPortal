@@ -20,9 +20,13 @@ namespace Application.Services
 
         public CommentDto CreateComment(CreateCommentDto newComment)
         {
-            var comment = _mapper.Map<Comment>(newComment);
+            //check if post and account exists
+            if (!_repository.PostExist(newComment.PostId) || !_repository.AcocuntExist(newComment.AccountId)) return null; 
 
-            comment.Created = DateTime.Now;
+            var comment = _mapper.Map<Comment>(newComment);
+                comment.AccountUsername = _repository.GetUsername(newComment.AccountId);
+                comment.Created = DateTime.Now;
+
 
             var result = _repository.Add(comment);
 

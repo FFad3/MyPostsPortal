@@ -6,6 +6,7 @@ namespace Application.ServiceInterfaces
     {
         AccountDto Register(CreateAccountDto newAccount);
         AccountDto Login(string username, string password);
+        void Remove(int id);
         IEnumerable<AccountDto> GetAccounts();
 
     }

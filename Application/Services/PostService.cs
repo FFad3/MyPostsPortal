@@ -20,6 +20,9 @@ namespace Application.Services
 
         public PostDto CreatePost(CreatePostDto newPost)
         {
+            //if account exists
+            if (!_repository.AccountExist(newPost.AccountId)) return null; 
+
             var post = _mapper.Map<Post>(newPost);
             post.Created = DateTime.Now;
 
