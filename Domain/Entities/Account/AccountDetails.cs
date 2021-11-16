@@ -19,4 +19,3 @@ namespace Domain.Entities
         public string Email { get; set; }
     }
 }
-//TODO: atomaticly add same primary key into to tables child and parnt
