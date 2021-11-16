@@ -9,14 +9,23 @@ namespace Application.Services.Utilities
 {
     internal class DataHashing
     {
-        internal static string StringToHash(string inputString)
+        internal static string StringToHash(string input)
         {
-            SHA1 sha1 = SHA1.Create();
+            // To calculate MD5 hash from an input string
+            MD5 md5 = MD5.Create();
+            byte[] inputBytes = Encoding.ASCII.GetBytes(input);// string =>bytes
 
-            byte[] password_bytes = Encoding.ASCII.GetBytes(inputString); // string -> bytes
-            byte[] encrypted_bytes=sha1.ComputeHash(password_bytes); //Hashing
+            byte[] hash = md5.ComputeHash(inputBytes);//hashing
 
-            return Convert.ToBase64String(encrypted_bytes); //return as string
+            // convert byte array to hex string
+            StringBuilder sb = new StringBuilder();
+
+            for (int i = 0; i < hash.Length; i++)
+            {
+                //to make hex string use lower case instead of uppercase add parameter "X2"
+                sb.Append(hash[i].ToString("X2"));
+            }
+            return sb.ToString();
         }
     }
 }

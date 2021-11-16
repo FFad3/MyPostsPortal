@@ -12,7 +12,9 @@ namespace Application.Dtos.DtoOther
 {
     public class CommentDto : IMap
     {
+        public string AccountUsername { get; set; }
         public string Text { get; set; }
+        public DateTime Created { get; set; }
 
         public void Mapping(Profile profile)
         {

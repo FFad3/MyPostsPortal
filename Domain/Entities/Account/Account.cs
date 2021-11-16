@@ -10,10 +10,10 @@ namespace Domain.Entities
         [Required, MaxLength(30)]
         public string Username { get; set; }
 
-        [Required, MaxLength(30)]
+        [Required, MaxLength(32)]
         public string Login { get; set; }
 
-        [Required, MaxLength(30)]
+        [Required, MaxLength(32)]
         public string Password { get; set; }    
 
         [Required]

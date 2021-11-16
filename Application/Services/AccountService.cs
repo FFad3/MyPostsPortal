@@ -4,6 +4,7 @@ using Application.Services.Utilities;
 using AutoMapper;
 using Domain.Entities;
 using Domain.RepositoryInterface;
+using System.Security.Principal;
 
 namespace Application.Services
 {
@@ -32,22 +33,18 @@ namespace Application.Services
 
         public AccountDto Register(CreateAccountDto newAccount)
         {
-            var account = _mapper.Map<Account>(newAccount);
-            //TODO:Password and login rules
-            //Check if login is avaiable
-            if(_repository.LoginIsAvaiable(account.Login) is null)
-            {
-                account.Created = DateTime.Now;
-                //Hashing credentials
-                account.Login = DataHashing.StringToHash(account.Login);
-                account.Password = DataHashing.StringToHash(account.Password);
+            newAccount.Login = DataHashing.StringToHash((string)newAccount.Login);
+            newAccount.Password = DataHashing.StringToHash((string)newAccount.Password);
 
-                var result = _repository.Add(account);
-                return _mapper.Map<AccountDto>(result);
-            }
-            //TODO: If login is used communicate
-            return null;
-            
+            //Check if login is available
+            if (_repository.LoginIsAvaiable(newAccount.Login)) return null;
+
+            var account = _mapper.Map<Account>(newAccount);
+            account.Created = DateTime.Now;
+
+            var result = _repository.Add(account);
+
+            return _mapper.Map<AccountDto>(result);
         }
 
         public IEnumerable<AccountDto> GetAccounts()

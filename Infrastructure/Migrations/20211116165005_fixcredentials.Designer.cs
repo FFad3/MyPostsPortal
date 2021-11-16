@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infrastructure.Migrations
 {
     [DbContext(typeof(MyPostsPortalContext))]
-    [Migration("20211109124000_Deploy")]
-    partial class Deploy
+    [Migration("20211116165005_fixcredentials")]
+    partial class fixcredentials
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -40,16 +40,16 @@ namespace Infrastructure.Migrations
 
                     b.Property<string>("Login")
                         .IsRequired()
-                        .HasMaxLength(30)
-                        .HasColumnType("nvarchar(30)");
+                        .HasMaxLength(32)
+                        .HasColumnType("nvarchar(32)");
 
                     b.Property<DateTime?>("Modified")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Password")
                         .IsRequired()
-                        .HasMaxLength(30)
-                        .HasColumnType("nvarchar(30)");
+                        .HasMaxLength(32)
+                        .HasColumnType("nvarchar(32)");
 
                     b.Property<string>("Username")
                         .IsRequired()
@@ -107,6 +107,11 @@ namespace Infrastructure.Migrations
 
                     b.Property<int>("AccountId")
                         .HasColumnType("int");
+
+                    b.Property<string>("AccountUsername")
+                        .IsRequired()
+                        .HasMaxLength(30)
+                        .HasColumnType("nvarchar(30)");
 
                     b.Property<DateTime>("Created")
                         .HasColumnType("datetime2");

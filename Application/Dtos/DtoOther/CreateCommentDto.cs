@@ -18,6 +18,8 @@ namespace Application.Dtos.DtoOther
         public int AccountId { get; set; }
         [Required,MaxLength(100)]
         public string Text { get; set; }
+        [Required, MaxLength(30)]
+        public string AccountUsername { get; set; }
         public void Mapping(Profile profile)
         {
             profile.CreateMap<CreateCommentDto,Comment>();

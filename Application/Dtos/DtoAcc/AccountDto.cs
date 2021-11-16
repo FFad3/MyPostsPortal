@@ -11,9 +11,9 @@ namespace Application.Dtos.DtoAcc
         public int AccountId { get; set; }
         [Required,MaxLength(30),MinLength(8)]
         public string Username { get; set; } = String.Empty;
-        [Required,MaxLength(30),MinLength(8)]
+        [Required,MaxLength(32),MinLength(8)]
         public string Login { get; set; } = String.Empty;
-        [Required,MaxLength (30), MinLength(8)]
+        [Required,MaxLength (32), MinLength(8)]
         public string Password { get; set; } = String.Empty;
         [Required]
         public AccountDetailsDto Details { get; set; }

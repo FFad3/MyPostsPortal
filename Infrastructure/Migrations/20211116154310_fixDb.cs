@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Infrastructure.Migrations
 {
-    public partial class Deploy : Migration
+    public partial class fixDb : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -78,6 +78,7 @@ namespace Infrastructure.Migrations
                     Text = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     PostId = table.Column<int>(type: "int", nullable: false),
                     AccountId = table.Column<int>(type: "int", nullable: false),
+                    AccountUsername = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: false),
                     Created = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Modified = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
