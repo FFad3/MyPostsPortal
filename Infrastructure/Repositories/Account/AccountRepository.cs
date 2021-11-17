@@ -19,8 +19,7 @@ namespace Infrastructure.Repositories
             Include(x=>x.Details);
 
         //Get Account by Id
-        public Account GetById(int id) => _context.Accounts.
-            SingleOrDefault(x => x.AccountId == id);
+        public Account GetById(int id) => _context.Accounts.SingleOrDefault(x => x.AccountId == id);
 
         //Add new Account
         public Account Add(Account ob)
@@ -51,5 +50,17 @@ namespace Infrastructure.Repositories
 
         //Check if login is used
         public bool LoginIsAvaiable(string Login) => _context.Accounts.Any(x => x.Login == Login);
+        //Remove account Data
+        public void RemoveComments(int id)
+        {
+            _context.Comments.RemoveRange(_context.Comments.Where(x => x.AccountId == id));
+            _context.SaveChanges();
+        }
+
+        public void RemoveOpinions(int id)
+        {
+            _context.Opinions.RemoveRange(_context.Opinions.Where(x => x.AccountId == id));
+            _context.SaveChanges();
+        }
     }
 }

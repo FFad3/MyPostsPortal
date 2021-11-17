@@ -17,7 +17,7 @@ namespace Domain.Entities
         public string Password { get; set; }    
 
         [Required]
-        public AccountDetails Details { get; set; }
+        public virtual AccountDetails Details { get; set; }
 
         public List<Post>? Posts { get; set; }
 

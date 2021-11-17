@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infrastructure.Migrations
 {
     [DbContext(typeof(MyPostsPortalContext))]
-    [Migration("20211116165005_fixcredentials")]
-    partial class fixcredentials
+    [Migration("20211117201922_fixdb")]
+    partial class fixdb
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -35,9 +35,6 @@ namespace Infrastructure.Migrations
                     b.Property<DateTime>("Created")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("DetailsAccountDetailsId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Login")
                         .IsRequired()
                         .HasMaxLength(32)
@@ -58,18 +55,13 @@ namespace Infrastructure.Migrations
 
                     b.HasKey("AccountId");
 
-                    b.HasIndex("DetailsAccountDetailsId");
-
                     b.ToTable("Accounts");
                 });
 
             modelBuilder.Entity("Domain.Entities.AccountDetails", b =>
                 {
                     b.Property<int>("AccountDetailsId")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("AccountDetailsId"), 1L, 1);
 
                     b.Property<DateTime>("Created")
                         .HasColumnType("datetime2");
@@ -221,15 +213,15 @@ namespace Infrastructure.Migrations
                     b.ToTable("PostContents");
                 });
 
-            modelBuilder.Entity("Domain.Entities.Account", b =>
+            modelBuilder.Entity("Domain.Entities.AccountDetails", b =>
                 {
-                    b.HasOne("Domain.Entities.AccountDetails", "Details")
-                        .WithMany()
-                        .HasForeignKey("DetailsAccountDetailsId")
+                    b.HasOne("Domain.Entities.Account", "Account")
+                        .WithOne("Details")
+                        .HasForeignKey("Domain.Entities.AccountDetails", "AccountDetailsId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Details");
+                    b.Navigation("Account");
                 });
 
             modelBuilder.Entity("Domain.Entities.Comment", b =>
@@ -295,6 +287,9 @@ namespace Infrastructure.Migrations
             modelBuilder.Entity("Domain.Entities.Account", b =>
                 {
                     b.Navigation("Comments");
+
+                    b.Navigation("Details")
+                        .IsRequired();
 
                     b.Navigation("Opinions");
 

@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Domain.Entities
 {
@@ -7,16 +8,17 @@ namespace Domain.Entities
         //Properties
         public int CommentId { get; set; } //PK
 
+        [ForeignKey("Post")]
+        public int PostId { get; set; }
+        [ForeignKey("Account")]
+        public int AccountId { get; set; }
+
         [Required, MaxLength(100)]
         public string Text { get; set; }
-        //Navigation Properties
-        [Required]
-        public int PostId { get; set; }
-        public Post Post { get; set; }
-        [Required]
-        public int AccountId { get; set; }
         [Required,MaxLength(30)]
         public string AccountUsername { get; set; }
-        public Account Account { get; set; }
+
+        public virtual Account Account { get; set; }
+        public virtual Post Post { get; set; }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Domain.Entities
 {
@@ -9,11 +10,13 @@ namespace Domain.Entities
 
         [Required]
         public bool IsLike { get; set; }
+        [ForeignKey("Post")]
+        public int PostId { get; set; }
+        [ForeignKey("Account")]
+        public int AccountId { get; set; }
 
         //Navigation Properties
-        public int PostId { get; set; }
-        public Post Post { get; set; }
-        public int AccountId { get; set; }
-        public Account Account { get; set; }
+        public virtual Account Account { get; set; }
+        public virtual Post Post { get; set; }
     }
 }

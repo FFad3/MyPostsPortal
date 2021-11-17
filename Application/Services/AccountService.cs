@@ -57,7 +57,12 @@ namespace Application.Services
         public void Remove(int id)
         {
             var account = _repository.GetById(id);
+            if (account is not null)
+            {
+            _repository.RemoveComments(id);
+            _repository.RemoveOpinions(id);
             _repository.Delete(account);
+            }
         }
     }
 }

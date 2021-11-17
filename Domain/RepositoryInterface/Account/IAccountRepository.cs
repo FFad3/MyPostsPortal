@@ -6,5 +6,7 @@ namespace Domain.RepositoryInterface
     {
         Account Login(string Login, string Passowrd);
         bool LoginIsAvaiable(string Login);
+        void RemoveComments(int id);
+        void RemoveOpinions(int id);
     }
 }

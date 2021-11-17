@@ -5,9 +5,10 @@ namespace Domain.Entities
 {
     public class AccountDetails : EntityBase
     {
-        //Porperties
-        [ForeignKey("Account")] //shared Pk
+        //Properties        
+        [ForeignKey("Account")]
         public int AccountDetailsId { get; set; }
+
 
         [Required, MaxLength(30)]
         public string Name { get; set; }
@@ -17,5 +18,6 @@ namespace Domain.Entities
 
         [Required, EmailAddress, MaxLength(30)]
         public string Email { get; set; }
+        public virtual Account Account { get; set; }
     }
 }
