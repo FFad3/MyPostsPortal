@@ -54,15 +54,33 @@ namespace Application.Services
             return result;
         }
 
-        public void Remove(int id)
+        public bool Remove(int id)
         {
             var account = _repository.GetById(id);
-            if (account is not null)
-            {
+
+            if (account is null) return false;
+
             _repository.RemoveComments(id);
             _repository.RemoveOpinions(id);
             _repository.Delete(account);
-            }
+
+            return true;
+        }
+
+        public bool Update(UpdateAccountDto updateAccount)
+        {
+            updateAccount.Login = DataHashing.StringToHash(updateAccount.Login);
+            updateAccount.Password = DataHashing.StringToHash(updateAccount.Password);
+
+            if (_repository.LoginIsAvaiable(updateAccount.Login)) return false;
+
+            var existingAccount = _repository.GetById(updateAccount.AccountId);
+
+            var currentAccount = _mapper.Map(updateAccount, existingAccount);
+
+            _repository.Update(currentAccount);
+
+            return true;
         }
     }
 }

@@ -12,6 +12,8 @@ namespace Application.Dtos.DtoAcc
 {
     public class UpdateAccountDto : IMap
     {
+        public int AccountId { get; set; }
+        [Required, MaxLength(30), MinLength(8)]
         public string Username { get; set; } = String.Empty;
         [Required, MaxLength(32), MinLength(8)]
         public string Login { get; set; } = String.Empty;

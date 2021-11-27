@@ -47,8 +47,26 @@ namespace MyPostsPortalApi.Controllers
         [HttpDelete("~/Remove"),SwaggerOperation(Summary ="Remove account with defined id")]
         public IActionResult RemoveAccount(int id)
         {
-            _service.Remove(id);
-            return NoContent();
+            var result =_service.Remove(id);
+
+            if (result is false) return BadRequest();
+
+            return Ok("Account has been removed");
         }
+
+        [HttpPut("~/Update"),SwaggerOperation(Summary ="Update account credentials")]
+        public IActionResult UpdateAccount(UpdateAccountDto acc)
+        {
+            if(ModelState.IsValid)
+            {
+                var result = _service.Update(acc);
+
+                if (result is false) return BadRequest();
+
+                return NoContent();
+            }
+            return BadRequest();
+        }
+        
     }
 }
