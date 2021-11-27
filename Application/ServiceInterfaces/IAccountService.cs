@@ -8,6 +8,7 @@ namespace Application.ServiceInterfaces
         AccountDto Login(string username, string password);
         void Remove(int id);
         IEnumerable<AccountDto> GetAccounts();
+        UpdateAccountDto Update(AccountDto account);
 
     }
 }
