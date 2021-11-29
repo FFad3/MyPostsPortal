@@ -17,7 +17,7 @@ namespace MyPostsPortalApi.Controllers
             _service = service;
         }
 
-        [HttpPost("~/Create"),SwaggerOperation("Add new comment")]
+        [HttpPost("~/Comment/Create"),SwaggerOperation("Add new comment")]
         public IActionResult CreatePost(CreateCommentDto newPost)
         {
             if (ModelState.IsValid)
@@ -26,6 +26,17 @@ namespace MyPostsPortalApi.Controllers
                 return Ok(result);
             }
             return BadRequest();    
+        }
+        [HttpDelete("~/Comment/Remove"),SwaggerOperation("Remove Comment")]
+        public IActionResult RemoveComment(int id)
+        {
+            var result = _service.RemoveComment(id);
+            if (result is true)
+            {
+                return NoContent();
+            }
+
+            return BadRequest();
         }
     }
 }

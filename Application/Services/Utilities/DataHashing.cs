@@ -19,7 +19,7 @@ namespace Application.Services.Utilities
             byte[] hash = md5.ComputeHash(inputBytes);//hashing
 
             // convert byte array to hex string
-            StringBuilder sb = new StringBuilder();
+            StringBuilder sb = new();
 
             for (int i = 0; i < hash.Length; i++)
             {

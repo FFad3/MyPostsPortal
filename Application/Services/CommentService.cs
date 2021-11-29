@@ -32,5 +32,17 @@ namespace Application.Services
 
             return _mapper.Map<CommentDto>(result);
         }
+
+        public bool RemoveComment(int id)
+        {
+            var comment = _repository.GetById(id);
+            if (comment is not null)
+            {
+                _repository.Delete(comment);
+                return true;
+            }
+
+            return false;
+        }
     }
 }

@@ -10,5 +10,6 @@ namespace Application.ServiceInterfaces
     public interface ICommentService
     {
         CommentDto CreateComment(CreateCommentDto newComment);
+        bool RemoveComment(int id);
     }
 }
