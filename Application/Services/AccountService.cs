@@ -75,6 +75,7 @@ namespace Application.Services
             if (_repository.LoginIsAvaiable(updateAccount.Login)) return false;
 
             var existingAccount = _repository.GetById(updateAccount.AccountId);
+            if (existingAccount is null) return false;
 
             var currentAccount = _mapper.Map(updateAccount, existingAccount);
 

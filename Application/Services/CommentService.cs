@@ -44,5 +44,17 @@ namespace Application.Services
 
             return false;
         }
+
+        public CommentDto UpdateComment(UpdateCommentDto updateComment)
+        {
+            var existingComment= _repository.GetById(updateComment.CommentId);
+            if (existingComment is null) return null;
+
+            var currentComment = _mapper.Map(updateComment, existingComment);
+
+            _repository.Update(currentComment);
+
+            return _mapper.Map<CommentDto>(currentComment);
+        }
     }
 }

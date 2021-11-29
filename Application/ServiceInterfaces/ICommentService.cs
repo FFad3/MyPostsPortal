@@ -11,5 +11,6 @@ namespace Application.ServiceInterfaces
     {
         CommentDto CreateComment(CreateCommentDto newComment);
         bool RemoveComment(int id);
+        CommentDto UpdateComment(UpdateCommentDto updateComment);
     }
 }

@@ -44,7 +44,7 @@ namespace MyPostsPortalApi.Controllers
             return Ok(result);
         }
 
-        [HttpDelete("~/Delete/Account"),SwaggerOperation(Summary ="Remove account with defined id")]
+        [HttpDelete("~/Account/Delete"),SwaggerOperation(Summary ="Remove account with defined id")]
         public IActionResult RemoveAccount(int id)
         {
             var result =_service.Remove(id);
@@ -54,7 +54,7 @@ namespace MyPostsPortalApi.Controllers
             return Ok("Account has been removed");
         }
 
-        [HttpPut("~/Update/Account"),SwaggerOperation(Summary ="Update account credentials")]
+        [HttpPatch("~/Account/Update"),SwaggerOperation(Summary ="Update account credentials")]
         public IActionResult UpdateAccount(UpdateAccountDto acc)
         {
             if(ModelState.IsValid)
@@ -66,7 +66,6 @@ namespace MyPostsPortalApi.Controllers
                 return NoContent();
             }
             return BadRequest();
-        }
-        
+        }        
     }
 }

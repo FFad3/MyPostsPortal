@@ -28,14 +28,12 @@ namespace Infrastructure.Repositories.Other
             throw new NotImplementedException();
         }
 
-        public Comment GetById(int id)
-        {
-            throw new NotImplementedException();
-        }
+        public Comment GetById(int id) => _context.Comments.FirstOrDefault(x => x.CommentId == id);
 
         public void Update(Comment ob)
         {
-            throw new NotImplementedException();
+            _context.Update(ob);
+            _context.SaveChanges();
         }
         //check if account exists
         public bool AcocuntExist(int id) => _context.Accounts.Any(x => x.AccountId == id);
