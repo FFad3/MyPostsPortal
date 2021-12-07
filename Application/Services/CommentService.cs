@@ -48,7 +48,9 @@ namespace Application.Services
         public CommentDto UpdateComment(UpdateCommentDto updateComment)
         {
             var existingComment= _repository.GetById(updateComment.CommentId);
-            if (existingComment is null) return null;
+            var accountExist = _repository.AcocuntExist(updateComment.CommentId);
+
+            if (existingComment is null || accountExist is false) return null;
 
             var currentComment = _mapper.Map(updateComment, existingComment);
 

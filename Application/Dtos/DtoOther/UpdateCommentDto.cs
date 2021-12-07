@@ -9,6 +9,8 @@ namespace Application.Dtos.DtoOther
     {
         [Required]
         public int CommentId { get; set; }
+        [Required]
+        public int AccountId { get; set; }
 
         [Required, MaxLength(100)]
         public string Text { get; set; }

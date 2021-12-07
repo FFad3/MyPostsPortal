@@ -31,7 +31,7 @@ namespace Infrastructure.Repositories
 
         public void Update(Post ob)
         {
-            throw new NotImplementedException();
+            _context.Posts.Update(ob);
         }
 
         public void Delete(Post ob)
