@@ -20,7 +20,8 @@ Projekt REST Api do zarządzania portalem społecznościowym
 
 # Wymagania
 
-Należy postawić bazę danych oraz api na serwerze:
+SQL server
+Api deploy on server
 
 # Zrzuty ekranu
 ![image](https://github.com/FFad3/MyPostsPortal/blob/master/SS/s1.PNG)
